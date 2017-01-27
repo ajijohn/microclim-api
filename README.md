@@ -4,7 +4,7 @@ microclim-api
 Official Microclim API Wrapper.
 
 # Installation
-git clone https://github.com/huckley/microclim-api.git microclim-api
+git clone https://github.com/trenchproject/microclim-api.git microclim-api
 
 # Usage
 from microclim.api import MicroclimApiClient
