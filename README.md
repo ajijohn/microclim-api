@@ -26,8 +26,20 @@ microclim_health = microclim_client.poke(active="True")
 
 ## Submit a filtering job
 ```python
-#regions=1:900-1000&&subpops=CHB&format=reformat&nfs=yes
-request_tracking_id = microclim_client.request(regions = '1:900-1000', subpops = 'CHB', format = 'reformat',nfs='yes')
+#sample values - Around Denver
+request_tracking_id = microclim_client.request(latS = 39.4001220001459,
+                    latN = 39.91394967016644,
+                    lonW = -106.50764465332031,
+                    lonE = -105.92399597167969,
+                    variable = 'Tsurface',
+                    shadelevel='0',
+                    hod='7',
+                    interval='0',
+                    aggregation='0',
+                    enddate='19810128',
+                    outputformat='csv',
+                    startdate='19810101')
+
 print("Tracking id " + request_tracking_id )
 ```
 
