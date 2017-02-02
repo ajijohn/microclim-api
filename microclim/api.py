@@ -46,7 +46,15 @@ class HttpApiClient(object):
 
         #base url 
         self.base_url = base_url
-        
+
+        #token uri
+        token_uri='api/auth'
+        response = requests.post(self.base_url+token_uri, data={'apikey': self.api_key, 'apisecret': self.api_secret})
+        if (response.status_code == requests.codes.ok):
+            # initialize with the token
+            self.auth_token = json.loads(response.text)['token']
+
+
     def _http_request(self, service_type, **kwargs):
         """
         Perform an HTTP Request using base_url and parameters
@@ -55,10 +63,9 @@ class HttpApiClient(object):
         and are parsed to python data structures.
         """
 
-        #uri = '%s%s?api_key=%s' % \
-        #    (self.base_url, service_type, self.api_key)
-        #response = requests.get(uri, params=kwargs)
-        response  = requests.post(self.base_url, data={'apikey': self.api_key,'apisecret': self.api_secret})
+        headers = {'Authorization': 'Bearer '+self.auth_token}
+
+        response = requests.get(self.base_url+service_type, params=kwargs,headers=headers)
         return response.headers, response
 
 
@@ -216,7 +223,7 @@ class MicroclimApiClient(HttpApiClient):
 
         return self._create_query('microclim/status', params)
 
-    def jobs(self):
+    def requests(self):
         """
         Returns the details of all the jobs.
 
@@ -231,7 +238,7 @@ class MicroclimApiClient(HttpApiClient):
         """
         params = self._get_params()
 
-        return self._create_query('jobs', params)
+        return self._create_query('requests', params)
 
     def get_details(self, requestId=None):
         """
@@ -282,7 +289,7 @@ if __name__ == '__main__':
     # localhost:3000/api/auth
     KEY = '07d4d584c04941a25e291feb8881c685'
     SECRET = '9ef6bbb24a855fbb765f3890e05592f4'
-    IP='localhost:3000/api/auth'
+    IP='localhost:3000/'
 
     #Initialize
 
@@ -291,6 +298,6 @@ if __name__ == '__main__':
     print("Request Status is " + job_status )
 
     #Without request
-    jobs = microclim_client.jobs()
+    jobs = microclim_client.requests()
 
     print("Jobs " + jobs )
