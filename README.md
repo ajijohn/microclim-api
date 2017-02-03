@@ -4,10 +4,15 @@ microclim-api
 Official Microclim API Wrapper.
 
 # Installation
+```
 git clone https://github.com/trenchproject/microclim-api.git microclim-api
+```
+
 
 # Usage
+```python
 from microclim.api import MicroclimApiClient
+```
 
 ## Microclim API
 
