@@ -238,7 +238,7 @@ class MicroclimApiClient(HttpApiClient):
         """
         params = self._get_params()
 
-        return self._create_query('requests', params)
+        return self._create_query('microclim/requests', params)
 
     def get_details(self, requestId=None):
         """
@@ -294,10 +294,11 @@ if __name__ == '__main__':
     #Initialize
 
     microclim_client = MicroclimApiClient(KEY,SECRET,IP)
-    job_status = microclim_client.status(requestId = '3e1613c0-21e2-4c1a-ad9c-45fb9370c1a5')
+
+    #Gets the status of the request id
+    job_status = microclim_client.status(requestId = '589292b9fccaf97e5a3cf472')
     print("Request Status is " + job_status )
 
-    #Without request
+    #Without request id, list all the requests for the user
     jobs = microclim_client.requests()
-
     print("Jobs " + jobs )
