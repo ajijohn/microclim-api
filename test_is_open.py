@@ -4,13 +4,15 @@ import sys
 import unittest
 
 global KEY
+global SECRET
 global IP
 
 
 class IsOKTest(unittest.TestCase):
 
     def test_ok_check(self):
-        microclim_client = MicroclimApiClient(KEY,SECRET,IP)
+        #TODO implement this fully
+        microclim_client = MicroclimApiClient(self.KEY,self.SECRET,self.IP)
         self.assertEqual(microclim_client.hello(),"ok")
 
 
