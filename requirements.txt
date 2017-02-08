@@ -1,3 +1,2 @@
 simplejson
-json
 requests

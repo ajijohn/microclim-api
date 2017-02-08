@@ -1,7 +1,10 @@
 microclim-api
 =============
 
-Official Microclim API Wrapper.
+Official Microclim API Wrapper - Python.
+
+[![Build Status](https://travis-ci.org/trenchproject/microclim-api.svg)](https://travis-ci.org/trenchproject/microclim-api)
+
 
 # Installation
 ```
