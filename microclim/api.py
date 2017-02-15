@@ -306,18 +306,18 @@ if __name__ == '__main__':
     #  "apisecret": "9ef6bbb24a855fbb765f3890e05592f4" }'
     # localhost:3000/api/auth
     #KEY = '07d4d584c04941a25e291feb8881c685'
-    KEY= '88eb4af7c20dd74742aed57b2c77aff1'
+    KEY= '0eda0dd88d1e6b417e8e9bebfc02cd95'
     #SECRET = '9ef6bbb24a855fbb765f3890e05592f4'
-    SECRET = '39becfd7fab41b51ea5c55ed0137ec3a'
+    SECRET = 'a0fc61db2d657c5359c775b62bffb669'
     # No protocol needed
-    IP='www.microclim.org/'
+    IP='localhost:3000/'
 
     #Initialize
 
     microclim_client = MicroclimApiClient(KEY,SECRET,IP)
 
     #Gets the status of the request id
-    job_status = microclim_client.status(requestId = '589ce9a4b2df447c910f7d59')
+    job_status = microclim_client.status(requestId = '589292b9fccaf97e5a3cf472')
     print("Request Status is " + job_status )
 
     #Without request id, list all the requests for the user
